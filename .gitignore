@@ -12,6 +12,12 @@ build/
 .env.local
 .env.*.local
 
+# Testing
+coverage/
+
+# TypeScript
+*.tsbuildinfo
+
 # Logs
 *.log
 npm-debug.log*
