@@ -3,3 +3,5 @@ const nextConfig = {
     globalNotFound: true,
   },
 }
+
+export default nextConfig  
