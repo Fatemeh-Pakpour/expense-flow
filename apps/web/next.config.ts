@@ -1,4 +1,5 @@
 const nextConfig = {
+  cacheComponents: true,
   experimental: {
     globalNotFound: true,
   },
