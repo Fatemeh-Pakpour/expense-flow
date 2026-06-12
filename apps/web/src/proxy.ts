@@ -1,11 +1,11 @@
+import { auth } from "@/auth"
 
-import { NextResponse } from 'next/server'
-import type { NextRequest } from 'next/server'
-
-export function proxy(request: NextRequest) {
-  return NextResponse.redirect(new URL('/home', request.url))
-}
+export const proxy = auth((req) => {
+  if (!req.auth) {
+    return Response.redirect(new URL("/", req.nextUrl.origin))
+  }
+})
 
 export const config = {
-  matcher: ['/((?!_next/static|_next/image|favicon.ico).*)'],
+  matcher: ["/dashboard/:path*"],
 }

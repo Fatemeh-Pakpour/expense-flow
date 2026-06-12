@@ -1,0 +1,9 @@
+- generic [active] [ref=e1]:
+  - main [ref=e2]:
+    - generic [ref=e3]:
+      - paragraph [ref=e4]: ExpenseFlow
+      - heading "Fullstack Expense Management Platform" [level=1] [ref=e5]
+      - paragraph [ref=e6]: A production-style SaaS portfolio project built with Next.js, NestJS, TypeScript, PostgreSQL, Prisma, and Docker.
+      - button "Sign in with Auth0" [ref=e9]
+  - button "Open Next.js Dev Tools" [ref=e15] [cursor=pointer]:
+    - img [ref=e16]

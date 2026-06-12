@@ -1,3 +1,5 @@
+import { SignInButton } from "@/components/auth/sign-in-button"
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-slate-950 px-6 py-12 text-white">
@@ -12,7 +14,10 @@ export default function Home() {
           A production-style SaaS portfolio project built with Next.js,
           NestJS, TypeScript, PostgreSQL, Prisma, and Docker.
         </p>
+        <div className="mt-8">
+          <SignInButton />
+        </div>
       </section>
     </main>
-  );
+  )
 }
