@@ -12,5 +12,15 @@ services:
     volumes:
       - expense_flow_postgres_data:/var/lib/postgresql/data
 
+  redis:
+    image: redis:7-alpine
+    container_name: expense-flow-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - expense_flow_redis_data:/data
+
 volumes:
   expense_flow_postgres_data:
+  expense_flow_redis_data:

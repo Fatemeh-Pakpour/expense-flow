@@ -19,6 +19,36 @@ enum ExpenseStatus {
   REJECTED
 }
 
+enum WebhookSource {
+  HUBSPOT
+}
+
+enum WebhookEventStatus {
+  RECEIVED
+  PROCESSING
+  PROCESSED
+  FAILED
+}
+
+/// Durable record of every inbound webhook. Doubles as the idempotency ledger:
+/// the unique (source, externalId) constraint makes redelivery a no-op.
+model WebhookEvent {
+  id         String             @id @default(uuid())
+  source     WebhookSource
+  externalId String // provider's event id (HubSpot `eventId`)
+  eventType  String // e.g. HubSpot `subscriptionType`
+  payload    Json
+  status     WebhookEventStatus @default(RECEIVED)
+  attempts   Int                @default(0)
+  error      String?
+
+  receivedAt  DateTime  @default(now())
+  processedAt DateTime?
+
+  @@unique([source, externalId])
+  @@index([status])
+}
+
 model User {
   id           String   @id @default(uuid())
   email        String   @unique

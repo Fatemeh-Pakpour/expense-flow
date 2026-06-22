@@ -4,6 +4,7 @@ packages:
 allowBuilds:
   '@nestjs/core': true
   '@prisma/engines': false
+  msgpackr-extract: true
   prisma: false
   sharp: true
   unrs-resolver: true

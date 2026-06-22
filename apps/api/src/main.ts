@@ -7,11 +7,14 @@ import { loadApiEnv } from './config/env';
 
 async function bootstrap() {
   const env = loadApiEnv();
-  const app = await NestFactory.create(AppModule, { bufferLogs: true });
+  const app = await NestFactory.create(AppModule, {
+    bufferLogs: true,
+    rawBody: true,
+  });
   app.useLogger(app.get(Logger));
   app.enableCors({
     origin: env.frontendUrl,
-    credentials: true
+    credentials: true,
   });
 
   app.useGlobalFilters(new GlobalExceptionFilter());
@@ -19,4 +22,4 @@ async function bootstrap() {
 
   await app.listen(env.port);
 }
-bootstrap();
+void bootstrap();

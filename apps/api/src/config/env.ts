@@ -49,3 +49,30 @@ export function loadApiEnv(): ApiEnv {
     port: parsePort('PORT', 3001),
   };
 }
+
+export type HubspotEnv = {
+  // The HubSpot app's client secret — used to validate the request signature.
+  clientSecret: string;
+  // The public base URL HubSpot calls (e.g. an ngrok tunnel in dev). The v3
+  // signature is computed over this exact URL, so it must match what HubSpot used.
+  publicUrl: string;
+};
+
+export function loadHubspotEnv(): HubspotEnv {
+  return {
+    clientSecret: required('HUBSPOT_CLIENT_SECRET'),
+    publicUrl: parseUrl('APP_PUBLIC_URL'),
+  };
+}
+
+export type RedisEnv = {
+  host: string;
+  port: number;
+};
+
+export function loadRedisEnv(): RedisEnv {
+  return {
+    host: process.env.REDIS_HOST ?? 'localhost',
+    port: parsePort('REDIS_PORT', 6379),
+  };
+}
