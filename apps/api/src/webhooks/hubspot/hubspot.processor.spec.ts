@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { getLoggerToken } from 'nestjs-pino';
-import { WebhookEventStatus } from '@prisma/client';
+import { WebhookEventStatus } from '@prisma-client';
 import { Job } from 'bullmq';
 import { HubspotProcessor } from './hubspot.processor';
 import { PrismaService } from '../../prisma/prisma.service';

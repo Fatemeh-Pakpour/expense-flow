@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { getQueueToken } from '@nestjs/bullmq';
 import { getLoggerToken } from 'nestjs-pino';
-import { Prisma, WebhookSource } from '@prisma/client';
+import { Prisma, WebhookSource } from '@prisma-client';
 import { HubspotService } from './hubspot.service';
 import { PrismaService } from '../../prisma/prisma.service';
 import { HUBSPOT_QUEUE } from './hubspot.types';
