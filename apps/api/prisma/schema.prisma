@@ -9,8 +9,7 @@ datasource db {
 }
 
 enum UserRole {
-  EMPLOYEE
-  MANAGER
+  USER
   ADMIN
 }
 
@@ -56,30 +55,30 @@ model User {
   email        String   @unique
   name         String
   passwordHash String
-  role         UserRole @default(EMPLOYEE)
+  role         UserRole @default(USER)
 
-  createdExpenses  Expense[] @relation("CreatedExpenses")
-  approvedExpenses Expense[] @relation("ApprovedExpenses")
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
-
-model Expense {
-  id          String        @id @default(uuid())
-  title       String
-  description String?
-  amount      Decimal       @db.Decimal(10, 2)
-  currency    String        @default("DKK")
-  category    String
-  status      ExpenseStatus @default(DRAFT)
-
-  createdById String
-  createdBy   User   @relation("CreatedExpenses", fields: [createdById], references: [id])
-
-  approvedById String?
-  approvedBy   User?   @relation("ApprovedExpenses", fields: [approvedById], references: [id])
+  // createdExpenses  Expense[] @relation("CreatedExpenses")
+  // approvedExpenses Expense[] @relation("ApprovedExpenses")
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+// model Expense {
+//   id          String        @id @default(uuid())
+//   title       String
+//   description String?
+//   amount      Decimal       @db.Decimal(10, 2)
+//   currency    String        @default("DKK")
+//   category    String
+//   status      ExpenseStatus @default(DRAFT)
+
+//   createdById String
+//   createdBy   User   @relation("CreatedExpenses", fields: [createdById], references: [id])
+
+//   approvedById String?
+//   approvedBy   User?   @relation("ApprovedExpenses", fields: [approvedById], references: [id])
+
+//   createdAt DateTime @default(now())
+//   updatedAt DateTime @updatedAt
+// }

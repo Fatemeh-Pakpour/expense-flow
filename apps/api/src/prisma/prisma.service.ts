@@ -5,14 +5,16 @@ import { PrismaClient } from '@prisma-client';
 @Injectable()
 export class PrismaService
   extends PrismaClient
-  implements OnModuleInit, OnModuleDestroy
-{
+  implements OnModuleInit, OnModuleDestroy {
   constructor() {
     const connectionString = process.env.DATABASE_URL;
+
     if (!connectionString) {
       throw new Error('Missing required environment variable: DATABASE_URL');
     }
-    super({ adapter: new PrismaPg({ connectionString }) });
+    const adapter = new PrismaPg({ connectionString });
+
+    super({ adapter });
   }
 
   async onModuleInit() {
