@@ -1,6 +1,7 @@
 import { BullModule } from '@nestjs/bullmq';
 import { Module } from '@nestjs/common';
 import { LoggerModule } from 'nestjs-pino';
+import { AiModule } from './ai/ai.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { loadRedisEnv } from './config/env';
@@ -11,6 +12,7 @@ import { HubspotModule } from './webhooks/hubspot/hubspot.module';
 @Module({
   imports: [
     LoggerModule.forRoot(loggerConfig),
+    AiModule,
     PrismaModule,
     BullModule.forRoot({ connection: loadRedisEnv() }),
     HubspotModule,
